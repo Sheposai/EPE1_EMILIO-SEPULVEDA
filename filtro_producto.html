@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Filtro de Productos</title>
+   
+</head>
+<body>
+    <h1>Productos</h1>
+    <input type="text" id="filtro" placeholder="Buscar por nombre o categoría">
+    <ul id="lista-productos"></ul>
+
+    <script>
+        // Arreglo con datos de frutas y verduras
+        const productos = [
+            { nombre: 'Zapallo', categoria: 'Verdura' },
+            { nombre: 'Zanahoria', categoria: 'Verdura' },
+            { nombre: 'Brocoli', categoria: 'Verdura' },
+            { nombre: 'Papa', categoria: 'Verdura' },
+            { nombre: 'Apio', categoria: 'Verdura' },
+            { nombre: 'Pera', categoria: 'Fruta' },
+            { nombre: 'Manzana', categoria: 'Fruta' },
+            { nombre: 'Sandia', categoria: 'Fruta' },
+            { nombre: 'Melon', categoria: 'Fruta' },
+            { nombre: 'Papaya', categoria: 'Fruta' }
+    
+        ];
+
+        // Función para mostrar los productos en pantalla
+        function mostrarProductos(filtro) {
+            const listaProductos = document.getElementById('lista-productos');
+            listaProductos.innerHTML = '';
+
+            productos.forEach(producto => {
+                if (producto.nombre.toLowerCase().includes(filtro.toLowerCase()) || producto.categoria.toLowerCase().includes(filtro.toLowerCase())) {
+                    const li = document.createElement('li');
+                    li.textContent = `${producto.nombre} (${producto.categoria})`;
+                    listaProductos.appendChild(li);
+                }
+            });
+        }
+
+        // Evento de cambio en el campo de filtro
+        const inputFiltro = document.getElementById('filtro');
+        inputFiltro.addEventListener('input', () => {
+            mostrarProductos(inputFiltro.value);
+        });
+
+        // Mostrar todos los productos al cargar la página
+        mostrarProductos('');
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Formulario de Contacto</title>
+  </head>
+  <body>
+    <h1>Formulario de Contacto</h1>
+    <form onsubmit="enviarFormulario(event)">
+      <label for="nombre">Nombre:</label><br />
+      <input type="text" id="nombre" required /><br />
+      <label for="correo">Correo Electrónico:</label><br />
+      <input type="email" id="correo" required /><br />
+      <label for="direccion">Dirección:</label><br />
+      <input type="text" id="direccion" required /><br />
+      <label for="comuna">Comuna:</label><br />
+      <select id="comuna" required>
+        <option value="Providencia">Providencia</option>
+        <option value="Las Condes">Las Condes</option>
+        <option value="Estacion Central">Estación Central</option>
+        <option value="Ñuñoa">Ñuñoa</option>
+        <option value="Santiago">Santiago</option>
+        <option value="Cerrillos">Cerrillos</option>
+        <option value="Pudahuel">Pudahuel</option>
+        <option value="Maipu">Maipú</option>
+        <option value="Puente Alto">Puente Alto</option>
+        <option value="Renca">Renca</option></select
+      ><br /><br />
+      <button type="submit">Enviar</button>
+    </form>
+    <br />
+    <br />
+    <button onclick="volverAlIndice()">Volver al Menu</button>
+    <script>
+      function enviarFormulario(evento) {
+        evento.preventDefault();
+
+        var nombre = document.getElementById("nombre").value;
+        var correo = document.getElementById("correo").value;
+        var direccion = document.getElementById("direccion").value;
+        var comuna = document.getElementById("comuna").value;
+
+        alert(
+          "Nombre: " +
+            nombre +
+            "\nCorreo Electrónico: " +
+            correo +
+            "\nDirección: " +
+            direccion +
+            "\nComuna: " +
+            comuna
+        );
+
+        document.getElementById("nombre").value = "";
+        document.getElementById("correo").value = "";
+        document.getElementById("direccion").value = "";
+        document.getElementById("comuna").value = "";
+      }
+      function volverAlIndice() {
+        window.location.href = "index.html";
+      }
+    </script>
+  </body>
+</html>
